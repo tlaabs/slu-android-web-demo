@@ -1,13 +1,13 @@
 package com.demo.slu.demo.Request;
 
 public class GetUserDTO {
-	private String id;
+	private String userid;
 
-	public String getId() {
-		return id;
+	public String getUserid() {
+		return userid;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 }

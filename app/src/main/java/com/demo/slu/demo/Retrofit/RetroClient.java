@@ -3,9 +3,7 @@ package com.demo.slu.demo.Retrofit;
 import android.content.Context;
 
 import com.demo.slu.demo.Request.GetUserDTO;
-import com.demo.slu.demo.Request.UpdateInfo;
-import com.demo.slu.demo.Request.UserInfo;
-import com.demo.slu.demo.Request.UserLogin;
+
 import com.demo.slu.demo.Service.RetroBaseApiService;
 
 import okhttp3.MultipartBody;

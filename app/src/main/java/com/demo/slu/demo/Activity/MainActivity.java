@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 GetUserDTO dto = new GetUserDTO();
-                dto.setId("01022345690");
+                dto.setUserid("01022345690");
                 retroClient.getUSer(dto, new RetroCallback() {
 
                     /*

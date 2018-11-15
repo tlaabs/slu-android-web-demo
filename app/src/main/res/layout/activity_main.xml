@@ -8,28 +8,10 @@
     tools:context=".Activity.MainActivity">
 
     <Button
-        android:id="@+id/signupBtn"
+        android:id="@+id/getUserBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="회원가입"
+        android:text="GET USER"
         />
-
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="로그인"
-        />
-
-
-    <Button
-        android:id="@+id/updateBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="유저 패스워드 변경 (토큰 인증 필요)"
-        />
-
-
 
 </LinearLayout>

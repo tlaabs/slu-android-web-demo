@@ -2,6 +2,7 @@ package com.demo.slu.demo.Retrofit;
 
 import android.content.Context;
 
+import com.demo.slu.demo.Request.GetUserDTO;
 import com.demo.slu.demo.Request.UpdateInfo;
 import com.demo.slu.demo.Request.UserInfo;
 import com.demo.slu.demo.Request.UserLogin;
@@ -56,28 +57,8 @@ public class RetroClient {
         return retrofit.create(service);
     }
 
-
-    public void signup(UserInfo user, final RetroCallback callback) {
-        apiService.signup(user).enqueue(new Callback<ResponseBody>() {
-
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(response.code(), response.body());
-                } else {
-                    callback.onFailure(response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callback.onError(t);
-            }
-        });
-    }
-
-    public void login(UserLogin login, final RetroCallback callback) {
-        apiService.login(login).enqueue(new Callback<ResponseBody>() {
+    public void getUSer(GetUserDTO dto, final RetroCallback callback) {
+        apiService.getUser(dto).enqueue(new Callback<ResponseBody>() {
 
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -94,26 +75,5 @@ public class RetroClient {
             }
         });
     }
-
-    public void update(String authorization, UpdateInfo updateInfo, final RetroCallback callback) {
-        apiService.update(authorization, updateInfo).enqueue(new Callback<ResponseBody>() {
-
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(response.code(), response.body());
-                } else {
-                    callback.onFailure(response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callback.onError(t);
-            }
-        });
-    }
-
-
 
 }

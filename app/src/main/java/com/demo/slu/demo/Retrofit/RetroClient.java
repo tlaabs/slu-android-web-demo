@@ -2,6 +2,7 @@ package com.demo.slu.demo.Retrofit;
 
 import android.content.Context;
 
+import com.demo.slu.demo.Object.HeartDTO;
 import com.demo.slu.demo.Request.GetUserDTO;
 
 import com.demo.slu.demo.Service.RetroBaseApiService;
@@ -55,8 +56,8 @@ public class RetroClient {
         return retrofit.create(service);
     }
 
-    public void getUSer(GetUserDTO dto, final RetroCallback callback) {
-        apiService.getUser(dto).enqueue(new Callback<ResponseBody>() {
+    public void sendHeart(HeartDTO dto, final RetroCallback callback) {
+        apiService.sendHeart(dto).enqueue(new Callback<ResponseBody>() {
 
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -7,6 +7,8 @@ import com.demo.slu.demo.Request.GetUserDTO;
 
 import com.demo.slu.demo.Service.RetroBaseApiService;
 
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -56,11 +58,11 @@ public class RetroClient {
         return retrofit.create(service);
     }
 
-    public void sendHeart(HeartDTO dto, final RetroCallback callback) {
-        apiService.sendHeart(dto).enqueue(new Callback<ResponseBody>() {
+    public void getHeart(String id, final RetroCallback callback) {
+        apiService.getHeart(id).enqueue(new Callback<List<HeartDTO>>() {
 
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+            public void onResponse(Call<List<HeartDTO>> call, Response<List<HeartDTO>> response) {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.code(), response.body());
                 } else {
@@ -69,7 +71,7 @@ public class RetroClient {
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<List<HeartDTO>> call, Throwable t) {
                 callback.onError(t);
             }
         });

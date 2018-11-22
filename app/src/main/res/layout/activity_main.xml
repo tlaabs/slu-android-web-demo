@@ -8,10 +8,10 @@
     tools:context=".Activity.MainActivity">
 
     <Button
-        android:id="@+id/sendHeart"
+        android:id="@+id/getHeart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="하트보내기"
+        android:text="하트 리스트"
         />
 
 </LinearLayout>

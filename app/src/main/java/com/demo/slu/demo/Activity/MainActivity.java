@@ -17,6 +17,9 @@ import com.google.gson.JsonObject;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
@@ -26,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     //Retrofit 객체 생성
     private RetroClient retroClient;
 
-    private Button sendHeartBtn;
+    private Button getHeartBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +41,11 @@ public class MainActivity extends AppCompatActivity {
         init();
 
 
-        sendHeartBtn.setOnClickListener(new View.OnClickListener() {
+        getHeartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HeartDTO dto = new HeartDTO();
-                dto.setSender("01022345690"); //이보영
-                dto.setReceiver("01050345566"); //정우성
-                retroClient.sendHeart(dto, new RetroCallback() {
+                String receiver_id = "01050345566";
+                retroClient.getHeart(receiver_id, new RetroCallback() {
 
                     /*
                     응답 오류
@@ -58,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(int code, Object receivedData) {
                         try {
                             Log.d(LOG, "성공");
-                            Toast.makeText(getApplicationContext(),"성공!",Toast.LENGTH_SHORT).show();
+                            ArrayList<HeartDTO> res = (ArrayList<HeartDTO>)receivedData;
+                            Toast.makeText(getApplicationContext(),"성공! 받은 리스트 수 : " + res.size(),Toast.LENGTH_SHORT).show();
                         }catch(Exception e){}
                     }
 
@@ -74,6 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void init(){
-        sendHeartBtn = findViewById(R.id.sendHeart);
+        getHeartBtn = findViewById(R.id.getHeart);
     }
 }

@@ -8,10 +8,10 @@
     tools:context=".Activity.MainActivity">
 
     <Button
-        android:id="@+id/getHeart"
+        android:id="@+id/profileUpdateBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="하트 리스트"
+        android:text="프로필 업데이트, 01022345690의 프로필을 '행복하다'로 변경"
         />
 
 </LinearLayout>

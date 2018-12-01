@@ -1,7 +1,6 @@
 package com.demo.slu.demo.Service;
 
-import com.demo.slu.demo.Object.HeartDTO;
-import com.demo.slu.demo.Request.GetUserDTO;
+
 
 import java.util.List;
 
@@ -23,6 +22,6 @@ public interface RetroBaseApiService {
     final String Base_URL = "http://devsim0.cafe24.com/";
 
     //하트리스트 받기
-    @GET("user/get/heart")
-    Call<List<HeartDTO>> getHeart(@Query("id") String id);
+    @GET("user/emotion")
+    Call<ResponseBody> updateProfile(@Query("id") String id, @Query("state") String state);
 }

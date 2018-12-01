@@ -2,8 +2,6 @@ package com.demo.slu.demo.Retrofit;
 
 import android.content.Context;
 
-import com.demo.slu.demo.Object.HeartDTO;
-import com.demo.slu.demo.Request.GetUserDTO;
 
 import com.demo.slu.demo.Service.RetroBaseApiService;
 
@@ -58,11 +56,11 @@ public class RetroClient {
         return retrofit.create(service);
     }
 
-    public void getHeart(String id, final RetroCallback callback) {
-        apiService.getHeart(id).enqueue(new Callback<List<HeartDTO>>() {
+    public void updateProfile(String id, String profile, final RetroCallback callback) {
+        apiService.updateProfile(id,profile).enqueue(new Callback<ResponseBody>() {
 
             @Override
-            public void onResponse(Call<List<HeartDTO>> call, Response<List<HeartDTO>> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.code(), response.body());
                 } else {
@@ -71,7 +69,7 @@ public class RetroClient {
             }
 
             @Override
-            public void onFailure(Call<List<HeartDTO>> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 callback.onError(t);
             }
         });

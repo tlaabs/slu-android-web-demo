@@ -7,21 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.demo.slu.demo.Object.HeartDTO;
 import com.demo.slu.demo.R;
-import com.demo.slu.demo.Request.GetUserDTO;
+
 
 import com.demo.slu.demo.Retrofit.RetroCallback;
 import com.demo.slu.demo.Retrofit.RetroClient;
-import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
     final static String LOG = "ConnectionTEST";
@@ -29,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     //Retrofit 객체 생성
     private RetroClient retroClient;
 
-    private Button getHeartBtn;
+    private Button profileUpdateBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +32,12 @@ public class MainActivity extends AppCompatActivity {
         init();
 
 
-        getHeartBtn.setOnClickListener(new View.OnClickListener() {
+        profileUpdateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String receiver_id = "01050345566";
-                retroClient.getHeart(receiver_id, new RetroCallback() {
+                String id = "01022345690";
+                String newProfile = "행복하다";
+                retroClient.updateProfile(id,newProfile, new RetroCallback() {
 
                     /*
                     응답 오류
@@ -59,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(int code, Object receivedData) {
                         try {
                             Log.d(LOG, "성공");
-                            ArrayList<HeartDTO> res = (ArrayList<HeartDTO>)receivedData;
-                            Toast.makeText(getApplicationContext(),"성공! 받은 리스트 수 : " + res.size(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"성공",Toast.LENGTH_SHORT).show();
                         }catch(Exception e){}
                     }
 
@@ -76,6 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void init(){
-        getHeartBtn = findViewById(R.id.getHeart);
+        profileUpdateBtn = findViewById(R.id.profileUpdateBtn);
     }
 }
